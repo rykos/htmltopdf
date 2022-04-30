@@ -1,11 +1,9 @@
-import { Field, Form, Formik, useFormik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { DropFile } from "../Components/DropFile/DropFile";
 import { LinkInput } from "../Components/LinkInput/LinkInput";
 import { StateButton } from "../Components/StateButton/StateButton";
-import * as Yup from "yup";
 import { useNavigate } from "react-router";
 import { GeneratePdf } from "../Services/PdfGenerator";
-import { useState } from "react";
 
 export function GeneratePDFView() {
     return (
@@ -27,19 +25,19 @@ const RequestForm = () => {
         <Formik
             initialValues={{ url: '', files: [] }}
             onSubmit={(values, { setSubmitting }) => {
-                if(values.url === '' && values.files.length === 0) {
+                if (values.url === '' && values.files.length === 0) {
                     alert("Please enter a url or upload a file");
                     setSubmitting(false);
                     return;
                 }
                 GeneratePdf({ files: values.files, url: values.url, options: {} })
                     .then((res: any) => {
-                        const file = new File([res.data], "", {type: "application/pdf"});
+                        const file = new File([res.data], "", { type: "application/pdf" });
                         navigation("/result", { state: { pdf: file } });
                     })
                     .finally(() => {
                         setSubmitting(false);
-                    });
+                    }); 
             }}
         >
             {({ isSubmitting, submitForm }) => (

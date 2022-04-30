@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { GeneratePdf } from "../../Services/PdfGenerator";
+import React from "react";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
 interface StateButtonProps {
