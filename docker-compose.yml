@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  client:
+    build: ./client-app
+    ports:
+      - "3600:80"
+  api:
+    build: .
+    ports:
+      - "6500:5550"
