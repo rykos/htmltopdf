@@ -1,0 +1,7 @@
+.drop-file-container {
+    @apply border-4 text-4xl border-primary bg-dark rounded-lg flex justify-center p-10;
+
+    &:hover {
+        @apply border-dashed;
+    } 
+}   
